@@ -257,3 +257,20 @@ def requetes_sql():
     print("Temps moyen d'une livraison par mois:", temps_moyen_livraison_par_mois)
 
 requetes_sql()
+
+#Permet d'ajouter et de print un élément dans la table Products
+def insert_table():
+    mycursor.execute('''
+        INSERT INTO Products VALUES ('product_id','product_category_name',4.21,8.77,4.23,44,55,66,77)   
+    ''')
+
+    mydb.commit()
+
+    mycursor.execute('''
+        SELECT *
+        FROM Products
+        WHERE product_id = 'product_id'
+    ''')
+    res = mycursor.fetchall()
+    for x in res:
+        print(x)
